@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的自定义声音面板</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px 0;
+        }
+
+        /* 顶部标题栏样式 */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        /* 标题左侧自定义图片 */
+        .header-img {
+            width: 60px;  /* 可自定义图片大小 */
+            height: 60px;
+            border-radius: 8px;
+            margin-right: 15px;
+            object-fit: cover;
+            border: 2px solid #ddd;
+        }
+
+        /* 标题文字 */
+        .header-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* 按钮分组容器 */
+        .btn-groups {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* 单个分组样式 */
+        .btn-group {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 分组标题 */
+        .group-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        /* 分组内按钮容器 */
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* 声音按钮通用样式 */
+        .sound-btn {
+            padding: 15px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: white;  /* 按钮文字颜色，可自定义 */
+        }
+
+        /* 按钮hover效果 */
+        .sound-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* 底部自定义文字区域 */
+        .footer {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== 顶部标题+自定义图片区域（可自由修改） ========== -->
+    <div class="header">
+        <!-- 自定义图片：替换src里的链接为你的图片链接（建议用GitHub上传图片后获取的Raw链接） -->
+        <img src="https://raw.githubusercontent.com/你的用户名/你的仓库名/main/自定义图片名.png" alt="标题图片" class="header-img">
+        <!-- 自定义标题文字：修改中间的文字即可 -->
+        <h1 class="header-title">我的声音控制面板</h1>
+    </div>
+
+    <!-- ========== 按钮分组区域（可自由添加/修改分组、按钮） ========== -->
+    <div class="btn-groups">
+        <!-- 分组1：音效类（可修改分组名、按钮颜色、按钮文字、音频链接） -->
+        <div class="btn-group">
+            <h2 class="group-title">音效类</h2>
+            <div class="btn-container">
+                <!-- 按钮1：background-color修改颜色，括号内改音频链接，按钮内改文字 -->
+                <button class="sound-btn" style="background-color: #ff6b6b;" onclick="playSound('https://raw.githubusercontent.com/你的用户名/你的仓库名/main/audio/sound1.mp3')">
+                    提示音
+                </button>
+                <button class="sound-btn" style="background-color: #ff6b6b;" onclick="playSound('https://raw.githubusercontent.com/你的用户名/你的仓库名/main/audio/sound2.mp3')">
+                    警告音
+                </button>
+                <button class="sound-btn" style="background-color: #ff6b6b;" onclick="playSound('https://raw.githubusercontent.com/你的用户名/你的仓库名/main/audio/sound3.mp3')">
+                    成功音
+                </button>
+            </div>
+        </div>
+
+        <!-- 分组2：环境音（可复制此分组添加新分组） -->
+        <div class="btn-group">
+            <h2 class="group-title">环境音</h2>
+            <div class="btn-container">
+                <!-- 按钮颜色改为分组专属色 #4ecdc4 -->
+                <button class="sound-btn" style="background-color: #4ecdc4;" onclick="playSound('https://raw.githubusercontent.com/你的用户名/你的仓库名/main/audio/env1.mp3')">
+                    雨声
+                </button>
+                <button class="sound-btn" style="background-color: #4ecdc4;" onclick="playSound('https://raw.githubusercontent.com/你的用户名/你的仓库名/main/audio/env2.mp3')">
+                    风声
+                </button>
+                <button class="sound-btn" style="background-color: #4ecdc4;" onclick="playSound('https://raw.githubusercontent.com/你的用户名/你的仓库名/main/audio/env3.mp3')">
+                    鸟鸣
+                </button>
+            </div>
+        </div>
+
+        <!-- 新增分组示例：复制上面的分组代码，修改以下内容即可
+        <div class="btn-group">
+            <h2 class="group-title">新分组名</h2>
+            <div class="btn-container">
+                <button class="sound-btn" style="background-color: #自定义颜色码;" onclick="playSound('音频链接')">
+                    按钮文字
+                </button>
+            </div>
+        </div>
+        -->
+    </div>
+
+    <!-- ========== 底部自定义文字区域（可自由修改） ========== -->
+    <div class="footer">
+        <p>第一行自定义文字：我的专属声音面板</p>
+        <p>第二行自定义文字：2025年制作 | 仅供个人使用</p>
+        <p>第三行自定义文字：任何你想加的内容都可以</p>
+    </div>
+
+    <!-- 声音播放核心函数（无需修改） -->
+    <script>
+        function playSound(soundUrl) {
+            const audio = new Audio(soundUrl);
+            audio.play().catch(error => {
+                alert('声音播放失败，请检查链接或浏览器设置！');
+                console.error('播放错误：', error);
+            });
+        }
+    </script>
+</body>
+</html>
